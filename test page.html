@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>NWA Academy - NCAT Mock Test | Google Form</title>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f7ff;
+            color: #1e2a3e;
+            line-height: 1.5;
+        }
+
+        /* ========== NAVBAR & FOOTER (same as main NWA Academy) ========== */
+        :root {
+            --primary-blue: #3B82F6;
+            --success-green: #10B981;
+            --warning-amber: #F59E0B;
+            --error-red: #EF4444;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --background: #FFFFFF;
+            --surface: #F9FAFB;
+            --border: #E5E7EB;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --radius: 0.5rem;
+        }
+
+        header {
+            background: #079bf1;
+            color: white;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .logo-img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: 0.2s;
+        }
+        .nav-links li a:hover {
+            opacity: 0.85;
+            text-decoration: underline;
+        }
+        .nav-links li a.active {
+            font-weight: bold;
+            border-bottom: 2px solid white;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        footer {
+            background-color: #f8fafc;
+            padding: 3rem 0 1.5rem;
+            margin-top: 3rem;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            color: #0f2b3d;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #4b5563;
+            transition: 0.2s;
+        }
+        .footer-links a:hover { color: #079bf1; }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            color: #4b5563;
+            font-size: 1.2rem;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+
+        /* ========== TEST PAGE SPECIFIC STYLES ========== */
+        .test-hero {
+            background: linear-gradient(135deg, #0b3b5f, #1b4f72);
+            color: white;
+            padding: 30px 30px;
+            border-radius: 28px;
+            margin: 25px 0 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .test-hero h1 {
+            font-size: 1.9rem;
+            margin-bottom: 10px;
+        }
+        .test-hero p {
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .badge {
+            background: #f39c12;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #1e2a3e;
+        }
+        .form-container {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .form-header {
+            background: #eef2ff;
+            padding: 18px 25px;
+            border-bottom: 2px solid #079bf1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .form-header h3 {
+            color: #0b3b5f;
+            font-weight: 600;
+        }
+        .form-note {
+            background: #fff7e6;
+            padding: 12px 20px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #b45309;
+        }
+        .google-form-embed {
+            width: 100%;
+            min-height: 800px;
+            height: calc(100vh - 350px);
+            border: none;
+            background: white;
+        }
+        .instruction-card {
+            background: #f0f9ff;
+            border-left: 5px solid #079bf1;
+            padding: 18px 25px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .instruction-text {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .instruction-text i {
+            font-size: 1.8rem;
+            color: #079bf1;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #079bf1;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #079bf1;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-outline:hover {
+            background: #079bf1;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 20px;
+                background: #004d7a;
+                flex-direction: column;
+                width: 220px;
+                padding: 15px;
+                border-radius: 12px;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: 0.3s ease;
+                gap: 10px;
+                z-index: 999;
+            }
+            .nav-links.active {
+                max-height: 400px;
+                opacity: 1;
+            }
+            .hamburger {
+                display: block;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .test-hero h1 {
+                font-size: 1.5rem;
+            }
+            .google-form-embed {
+                min-height: 600px;
+                height: 70vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== EXACT SAME HEADER AS MAIN NWA ACADEMY ========== -->
+<header>
+    <div class="container">
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/52?text=NWA" alt="NWA Academy Logo" class="logo-img" onerror="this.src='https://nwaacademy.vercel.app/logo.png'">
+                <span>NWA Academy</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Courses</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Developer</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- Test Info Banner -->
+        <div class="test-hero">
+            <h1><i class="fas fa-file-alt"></i> NCAT Mock Test 2026-29 (STS Pattern)</h1>
+            <p>Welcome to NWA Academy's official NCAT preparation test. This mock exam is designed according to the Sindh Testing Service (STS) curriculum for Nursing Colleges Admission Test. Answer all 100 MCQs across Biology, Chemistry, Physics, and English.</p>
+            <div class="badge-group">
+                <span class="badge">Biology: 40% (40 MCQs)</span>
+                <span class="badge"> Chemistry: 20% (20 MCQs)</span>
+                <span class="badge">Physics: 15% (15 MCQs)</span>
+                <span class="badge"> English: 15% (15 MCQs)</span>
+                <span class="badge">100 Minutes | No Negative Marking</span>
+                <span class="badge">Based on STS Official Syllabus</span>
+            </div>
+        </div>
+
+        <!-- Instructions & Quick info -->
+        <div class="instruction-card">
+            <div class="instruction-text">
+                <i class="fas fa-info-circle"></i>
+                <span><strong>Important Instructions:</strong> Read each question carefully. Select the best answer. No negative marking. Complete the test within 100 minutes.</span>
+            </div>
+            <div>
+                <a href="#googleFormEmbed" class="btn-outline" id="scrollToFormBtn"><i class="fas fa-arrow-down"></i> Start Test Below</a>
+            </div>
+        </div>
+
+        <!-- Google Form Embedded Section -->
+        <div class="form-container" id="googleFormEmbed">
+            <div class="form-header">
+                <h2>NCAT Mock Test - NWA ACADEMY </h2>
+                <div class="form-note">
+                    <i class="fas fa-shield-alt"></i> Your responses will be recorded securely
+                </div>
+            </div>
+            <!-- 
+                ============================================================
+                EMBED YOUR GOOGLE FORM HERE
+                Replace the src URL with your actual Google Form embed link.
+                Example format: https://docs.google.com/forms/d/e/your-form-id/viewform?embedded=true
+                ============================================================
+            -->
+            <iframe 
+                class="google-form-embed" 
+                 src="https://docs.google.com/forms/d/e/1FAIpQLSedy1kwkdaP1loc078MFoRvSLyetmWO_YOZZu8_wfn3OEsukw/viewform?embedded=true"
+                 width="640" height="30160" frameborder="0" marginheight="0" marginwidth="0">
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+                Loading NCAT Mock Test...
+            </iframe>
+        </div>
+
+        <!-- Additional resources or note -->
+        <div style="background: #e6f7ec; border-radius: 24px; padding: 18px 25px; margin: 20px 0 30px; text-align: center;">
+            <i class="fas fa-trophy" style="color: #2e7d32; margin-right: 10px;"></i>
+            <strong>Pro Tip:</strong> After submitting the test, you will receive your score and performance analysis. Review weak areas and retake for improvement.
+        </div>
+    </div>
+</main>
+
+<!-- ========== SAME FOOTER AS MAIN PAGE ========== -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>NWA Academy</h4>
+                <p>Your trusted partner for NCAT exam preparation with proven results and comprehensive resources.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Developer</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">NCAT Syllabus 2026-29</a></li>
+                    <li><a href="#">Practice Tests</a></li>
+                    <li><a href="#">Study Guides</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact Us</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:nursingwallaacademy123@gmail.com"><i class="fas fa-envelope"></i> nursingwallaacademy123@gmail.com</a></li>
+                    <li><a href="tel:+923292139800"><i class="fas fa-phone"></i> (+92) 3292139800</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Larkana, Sindh Pakistan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NWA Academy. All rights reserved </p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle functionality (same as main page)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Toggle icon between bars and times
+        const icon = hamburger.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when clicking a link (better mobile UX)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+
+    // Smooth scroll to Google Form
+    document.getElementById('scrollToFormBtn').addEventListener('click', function(e) {
+        e.preventDefault();
+        const formSection = document.getElementById('googleFormEmbed');
+        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // Optional: Add a dynamic message for form loading (just for UX)
+    const iframe = document.querySelector('.google-form-embed');
+    iframe.addEventListener('load', function() {
+        console.log("Google Form loaded successfully");
+    });
+</script>
+
+<!-- 
+    ============================================================
+    HOW TO REPLACE WITH YOUR OWN GOOGLE FORM:
+    1. Create your NCAT on Google Forms with 100 MCQs
+    2. Click "Send" → "Embed" tab
+    3. Copy the iframe src URL (looks like: https://docs.google.com/forms/d/e/.../viewform?embedded=true)
+    4. Replace the current src inside the <iframe> tag above
+    ============================================================
+    Current placeholder form is a demo form. Replace with your actual NCAT test form.
+-->
+</body>
+</html>
